@@ -1,0 +1,25 @@
+
+rates = {
+    "USD": 1,
+    "INR": 83.2,
+    "EUR": 0.93,
+    "GBP": 0.79,
+    "JPY": 151.5
+}
+
+print("Available currencies:", list(rates.keys()))
+
+# Taking input from the user
+from_currency = input("Enter the currency you have (USD/INR/EUR/GBP/JPY): ").upper()
+to_currency = input("Enter the currency you want to convert to: ").upper()
+amount = float(input("Enter the amount to convert: "))
+
+# Check if currencies exist
+if from_currency in rates and to_currency in rates:
+    # Convert to USD first, then to target currency
+    amount_in_usd = amount / rates[from_currency]
+    converted_amount = amount_in_usd * rates[to_currency]
+
+    print(f"\n{amount} {from_currency} = {converted_amount:.2f} {to_currency}")
+else:
+    print("Invalid currency code! Please choose from:", list(rates.keys()))
